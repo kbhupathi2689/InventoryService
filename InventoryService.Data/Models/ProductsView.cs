@@ -16,5 +16,6 @@ namespace InventoryService.Data.Models
         public decimal StandardCost { get; set; }
         public decimal SellingPrice { get; set; }
         public DateTime ReleasedDate { get; set; }
+        public string InventoryName { get; set; }
     }
 }
