@@ -1,0 +1,25 @@
+﻿CREATE TABLE [dbo].[Product] (
+    [ProductID]               BIGINT           IDENTITY (1, 1) NOT NULL,
+    [ProductName]             NVARCHAR (MAX)   NOT NULL,
+    [ProductNumber]           NVARCHAR (MAX)   NOT NULL,
+    [ProductTypeID]           BIGINT           NOT NULL,
+    [ProductCategoryID]       BIGINT           NOT NULL,
+    [ProductSubCategoryID]    BIGINT           NOT NULL,
+    [ProductIsSalable]        BIT              NOT NULL,
+    [ProductIsPurchased]      BIT              NOT NULL,
+    [StandardCost]            MONEY            NOT NULL,
+    [ProductSellingPrice]     MONEY            NOT NULL,
+    [ProductSellStartDate]    DATETIME         NULL,
+    [ProductSellEndDate]      DATETIME         NULL,
+    [ProductDiscontinuedDate] DATETIME         NULL,
+    [LastUpdatedDate]         DATETIME         NOT NULL,
+    [LastUpdatedUser]         NVARCHAR (MAX)   NOT NULL,
+    [RowGuid]                 UNIQUEIDENTIFIER NOT NULL,
+    [ProductVersion]          NVARCHAR (MAX)   NULL,
+    [ProductReleasedOn]       DATETIME         NOT NULL,
+    CONSTRAINT [PK_Product] PRIMARY KEY CLUSTERED ([ProductID] ASC),
+    FOREIGN KEY ([ProductCategoryID]) REFERENCES [dbo].[ProductCategory] ([ProductCategoryID]),
+    FOREIGN KEY ([ProductSubCategoryID]) REFERENCES [dbo].[ProductSubCategory] ([ProductSubCategoryID]),
+    FOREIGN KEY ([ProductTypeID]) REFERENCES [dbo].[ProductType] ([ProductTypeID])
+);
+
